@@ -27,12 +27,15 @@ pipeline {
         } 
         stage("checkout the branch") {
             steps {
+                script {
                 echo "${env.COMMIT_SCOPE}"
                 git branch: 'main', credentialsId: 'GitHub-credentials', url: 'http://github.com/Huda-Almutairi/jenkins-pipeline.git'
                 //sh "git checkout -b deploy-branch ${env.COMMIT}" //env.COMMITS
-                sh "git branch deploy-branch ${env.COMMIT_SCOPE}"
-                
-                
+                sh "git checkout -b deploy-branch ${env.COMMIT_SCOPE}"
+                sh "git add ."
+                sh "git commit -m "new breanch from commit""
+                sh "git push origin main"
+                }                
             }
         }
         stage("exec maven build") {
