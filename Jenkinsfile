@@ -29,7 +29,7 @@ pipeline {
             steps {
                 script {
                     echo "${env.COMMIT_SCOPE}"
-                    //git branch: 'main', credentialsId: 'GitHub-credentials', url: 'http://github.com/Huda-Almutairi/jenkins-pipeline.git'
+                    git branch: 'main', credentialsId: 'GitHub-credentials', url: 'http://github.com/Huda-Almutairi/jenkins-pipeline.git'
                     sh '''
                         git branch deploy-branch
                         git checkout -b deploy-branch ${env.COMMIT_SCOPE}
