@@ -33,7 +33,7 @@ pipeline {
                     //sh "git checkout -b deploy-branch ${env.COMMIT}" //env.COMMITS
                     sh "git checkout -b deploy-branch ${env.COMMIT_SCOPE}"
                     sh "git add ."
-                    sh "git commit -m "new breanch from commit""
+                    sh "git commit -m "'new breanch from commit'"
                     sh "git push origin main"
                 }                
             }
