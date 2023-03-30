@@ -25,7 +25,7 @@ pipeline {
         } 
         stage("checkout the branch") {
             steps {
-                              // echo "${env.BRANCH_SCOPE}"
+                echo "${env.COMMIT_SCOPE}"
                 git branch: 'main', credentialsId: 'GitHub-credentials', url: 'http://github.com/Huda-Almutairi/jenkins-pipeline.git'
                 sh "git checkout -b deploy-branch ${env.COMMIT}" //env.COMMITS
                 
