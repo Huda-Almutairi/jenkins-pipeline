@@ -1,7 +1,5 @@
 
 
-def COMMIT = ""
-
 pipeline {
     agent any
     options{
@@ -32,7 +30,7 @@ pipeline {
                 echo "${env.COMMIT_SCOPE}"
                 git branch: 'main', credentialsId: 'GitHub-credentials', url: 'http://github.com/Huda-Almutairi/jenkins-pipeline.git'
                 //sh "git checkout -b deploy-branch ${env.COMMIT}" //env.COMMITS
-                sh "git branch deploy-branch ${env.COMMIT}"
+                sh "git branch deploy-branch ${env.COMMIT_SCOPE}"
                 
                 
             }
