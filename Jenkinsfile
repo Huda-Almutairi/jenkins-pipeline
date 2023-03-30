@@ -31,11 +31,11 @@ pipeline {
                     echo "${env.COMMIT_SCOPE}"
                     git branch: 'main', credentialsId: 'GitHub-credentials', url: 'http://github.com/Huda-Almutairi/jenkins-pipeline.git'
                     sh '''
-                        git branch deploy-branch
-                        git checkout -b deploy-branch ${env.COMMIT_SCOPE}
+                        git branch deploy-branch1
+                        git checkout -b deploy-branch1 ${env.COMMIT_SCOPE}
                         git add .
                         git commit -m 'new breanch from commit'
-                        git push origin deploy-branch
+                        git push origin deploy-branch1
                     '''
                 }                
             }
