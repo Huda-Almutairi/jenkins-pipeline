@@ -29,11 +29,13 @@ pipeline {
             steps {
                 script {
                     echo "${env.COMMIT_SCOPE}"
-                    //git branch: 'main', credentialsId: 'GitHub-credentials', url: 'http://github.com/Huda-Almutairi/jenkins-pipeline.git'
-                    sh "git checkout -b deploy-branch ${env.COMMIT_SCOPE}"
-                    sh "git add ."
-                    sh "git commit -m 'new breanch from commit'"
-                    sh "git push origin main"
+                    git branch: 'main', credentialsId: 'GitHub-credentials', url: 'http://github.com/Huda-Almutairi/jenkins-pipeline.git'
+                    sh '''
+                    git checkout -b deploy-branch ${env.COMMIT_SCOPE}
+                    git add .
+                    git commit -m 'new breanch from commit'
+                    git push origin main
+                    '''
                 }                
             }
         }
