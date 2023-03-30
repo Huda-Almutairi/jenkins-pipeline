@@ -1,6 +1,6 @@
 
 
-def COMMIT = []
+def COMMIT = ""
 
 pipeline {
     agent any
