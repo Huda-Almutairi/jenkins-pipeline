@@ -19,15 +19,15 @@ pipeline {
                     liste = readFile 'log.txt'
                     echo "please click on the link here to chose the branch to build"
                     env.COMMIT_SCOPE = input message: 'Please choose the branch to build ', ok: 'Validate!',
-                            parameters: [choice(name: 'BRANCH_NAME', choices: "${liste}", description: 'Branch to build?')]
+                            parameters: [choice(name: 'COMMITS', choices: "${liste}", description: 'Branch to build?')]
                 }
             }
         } 
         stage("checkout the branch") {
             steps {
-                echo "${env.BRANCH_SCOPE}"
-                git branch: 'main', credentialsId: 'GitHub-credentials', url: 'http://github.com/Huda-Almutairi/jenkins-pipeline.git'
-                sh "git checkout -b build ${env.BRANCH_NAME}"
+               // git branch: 'main', credentialsId: 'GitHub-credentials', url: 'http://github.com/Huda-Almutairi/jenkins-pipeline.git'
+                sh "git checkout -b deploy-branch ${env.COMMITS}"
+                
             }
         }
         stage("exec maven build") {
